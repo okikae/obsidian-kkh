@@ -63,12 +63,29 @@ Obsidian はマルチプラットフォーム・マルチデバイスで利用�
 ## インストール方法
 
 ### 手動にて
+
+[公式サイト](https://docs.obsidian.md/Plugins/Getting+started/Build+a+plugin)の手順書に従って "main.js" を生成します。公式では Vault フォルダにリポジトリを clone するようになっていますが、iCloud を利用している場合には注意が必要です。100MB を超える `node_modules` が同期されてしまうため、貴重なデータ通信量(いわゆるギガ)を消費してしまいます。また、iCloud の容量も圧迫してしまいます。
+
+ここではホームディレクトリで生成して Vault フォルダに必要なものをコピーする方法を記述します。なお、最低限 Node.js が必要です。
+
+コマンドプロンプトにて
+
+```sh
+cd $HOME
+git clone https://github.com/okikae/obsidian-kkh.git
+cd obsidian-kkh
+npm install
+npm run build
+```
+
+これで "main.js" ファイルが生成されました。`git clone` の部分は、'git' コマンドが無い場合、このリポジトリを zip でダウンロードすれば良いです(解凍してその中に移動)。
+
 Vault フォルダ以下に ".obsidian/plugins/obsidian-kkh" フォルダを作成し、そこに "main.js", "manifest.json" をコピーします。
 
 わたしは macOS, iPadOS, iOS で共有するために iCloud を利用しています。このため、Vault フォルダを "$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents
 " 以下に置いています。
 
-例えば Vault フォルダを「雑記」とします。このときプラグインは下記のように配置すると利用可能になります。
+例えば Vault フォルダを「雑記」とします。このときプラグインは下記のように配置して Obsidian で設定すると利用可能になります。
 
 ```
 $HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/雑記/.obsidian/plugins/obsidian-kkh/main.js
@@ -76,6 +93,8 @@ $HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/雑記/.obsidian/plu
 ```
 
 Windows ではエクスプローラーでフォルダを作成していって、上記の 2 ファイルをコピーすれば良いと思います(ドットフォルダが不可視になるのかわかりませんけど)。
+
+Obsidian での設定は、"Preference..." -> "Community Plugins" -> "Installed plugins" で有効にすれば完了です。
 
 ### 公式サイトのコミュニティープラグインから
 
